@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A1_200412952.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191002194651_Initial")]
+    [Migration("20191002202800_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,31 @@ namespace A1_200412952.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Animal");
+                });
+
+            modelBuilder.Entity("A1_200412952.Models.Pet_Food", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Brand");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Nutritional_Information");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("Type_Of_Animal");
+
+                    b.Property<decimal>("Weight");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pet_Food");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

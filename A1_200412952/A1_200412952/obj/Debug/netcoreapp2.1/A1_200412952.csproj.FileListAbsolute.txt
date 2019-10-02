@@ -38,3 +38,9 @@ C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_20
 C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\Animals\Details.g.cshtml.cs
 C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\Animals\Edit.g.cshtml.cs
 C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\Animals\Index.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\PetFood\Create.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\PetFood\Delete.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\PetFood\Details.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\PetFood\Edit.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\PetFood\Index.g.cshtml.cs
+C:\Users\Kiril Mankovskyi\Desktop\Semester 3\Server-Side Scripting-ASP.NET\A1_200412952\A1_200412952\A1_200412952\obj\Debug\netcoreapp2.1\Razor\Views\Home\Example.g.cshtml.cs

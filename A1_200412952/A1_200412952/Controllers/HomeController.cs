@@ -28,7 +28,11 @@ namespace A1_200412952.Controllers
 
             return View();
         }
-
+        public IActionResult Example(String Name)
+        {
+            ViewData["Message"] = "You entered Name: " + Name;
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
