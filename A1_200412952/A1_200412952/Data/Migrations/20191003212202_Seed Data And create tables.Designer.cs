@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A1_200412952.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191002202800_Initial")]
-    partial class Initial
+    [Migration("20191003212202_Seed Data And create tables")]
+    partial class SeedDataAndcreatetables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,24 +23,33 @@ namespace A1_200412952.Data.Migrations
 
             modelBuilder.Entity("A1_200412952.Models.Animal", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AnimalId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("AnimalId");
 
                     b.ToTable("Animal");
+
+                    b.HasData(
+                        new { AnimalId = 1, Description = "Big and cute", Name = "Labrador" },
+                        new { AnimalId = 2, Description = "HUGE and has lots of hair", Name = "GIANT SCHNAUZER" }
+                    );
                 });
 
-            modelBuilder.Entity("A1_200412952.Models.Pet_Food", b =>
+            modelBuilder.Entity("A1_200412952.Models.PetFood", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnimalId");
 
                     b.Property<string>("Brand");
 
@@ -48,17 +57,21 @@ namespace A1_200412952.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Nutritional_Information");
+                    b.Property<string>("NutritionalInformation");
 
                     b.Property<decimal>("Price");
 
-                    b.Property<string>("Type_Of_Animal");
-
-                    b.Property<decimal>("Weight");
+                    b.Property<float>("Weight");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pet_Food");
+                    b.HasIndex("AnimalId");
+
+                    b.ToTable("PetFood");
+
+                    b.HasData(
+                        new { Id = 1, AnimalId = 2, Brand = "NoName", Description = "Your pet will like it", Name = "Meat", NutritionalInformation = "It is probably healthy", Price = 10m, Weight = 4f }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -224,6 +237,14 @@ namespace A1_200412952.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("A1_200412952.Models.PetFood", b =>
+                {
+                    b.HasOne("A1_200412952.Models.Animal", "TypeOfAnimal")
+                        .WithMany("PetFoods")
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

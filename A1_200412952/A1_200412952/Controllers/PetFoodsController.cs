@@ -10,22 +10,23 @@ using A1_200412952.Models;
 
 namespace A1_200412952.Controllers
 {
-    public class PetFoodController : Controller
+    public class PetFoodsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PetFoodController(ApplicationDbContext context)
+        public PetFoodsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: PetFood
+        // GET: PetFoods
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pet_Food.ToListAsync());
+            var applicationDbContext = _context.PetFood.Include(p => p.TypeOfAnimal);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: PetFood/Details/5
+        // GET: PetFoods/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace A1_200412952.Controllers
                 return NotFound();
             }
 
-            var pet_Food = await _context.Pet_Food
+            var petFood = await _context.PetFood
+                .Include(p => p.TypeOfAnimal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pet_Food == null)
+            if (petFood == null)
             {
                 return NotFound();
             }
 
-            return View(pet_Food);
+            return View(petFood);
         }
 
-        // GET: PetFood/Create
+        // GET: PetFoods/Create
         public IActionResult Create()
         {
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description");
             return View();
         }
 
-        // POST: PetFood/Create
+        // POST: PetFoods/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Price,Name,Description,Nutritional_Information,Weight,Brand,Type_Of_Animal")] Pet_Food pet_Food)
+        public async Task<IActionResult> Create([Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,AnimalId")] PetFood petFood)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pet_Food);
+                _context.Add(petFood);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pet_Food);
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description", petFood.AnimalId);
+            return View(petFood);
         }
 
-        // GET: PetFood/Edit/5
+        // GET: PetFoods/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace A1_200412952.Controllers
                 return NotFound();
             }
 
-            var pet_Food = await _context.Pet_Food.FindAsync(id);
-            if (pet_Food == null)
+            var petFood = await _context.PetFood.FindAsync(id);
+            if (petFood == null)
             {
                 return NotFound();
             }
-            return View(pet_Food);
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Name", petFood.AnimalId);
+            return View(petFood);
         }
 
-        // POST: PetFood/Edit/5
+        // POST: PetFoods/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Name,Description,Nutritional_Information,Weight,Brand,Type_Of_Animal")] Pet_Food pet_Food)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,AnimalId")] PetFood petFood)
         {
-            if (id != pet_Food.Id)
+            if (id != petFood.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace A1_200412952.Controllers
             {
                 try
                 {
-                    _context.Update(pet_Food);
+                    _context.Update(petFood);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Pet_FoodExists(pet_Food.Id))
+                    if (!PetFoodExists(petFood.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace A1_200412952.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pet_Food);
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description", petFood.AnimalId);
+            return View(petFood);
         }
 
-        // GET: PetFood/Delete/5
+        // GET: PetFoods/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace A1_200412952.Controllers
                 return NotFound();
             }
 
-            var pet_Food = await _context.Pet_Food
+            var petFood = await _context.PetFood
+                .Include(p => p.TypeOfAnimal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pet_Food == null)
+            if (petFood == null)
             {
                 return NotFound();
             }
 
-            return View(pet_Food);
+            return View(petFood);
         }
 
-        // POST: PetFood/Delete/5
+        // POST: PetFoods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pet_Food = await _context.Pet_Food.FindAsync(id);
-            _context.Pet_Food.Remove(pet_Food);
+            var petFood = await _context.PetFood.FindAsync(id);
+            _context.PetFood.Remove(petFood);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool Pet_FoodExists(int id)
+        private bool PetFoodExists(int id)
         {
-            return _context.Pet_Food.Any(e => e.Id == id);
+            return _context.PetFood.Any(e => e.Id == id);
         }
     }
 }

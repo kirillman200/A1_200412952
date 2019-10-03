@@ -34,7 +34,7 @@ namespace A1_200412952.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.AnimalId == id);
             if (animal == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace A1_200412952.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Animal animal)
+        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace A1_200412952.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("AnimalId,Name,Description")] Animal animal)
         {
-            if (id != animal.Id)
+            if (id != animal.AnimalId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace A1_200412952.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AnimalExists(animal.Id))
+                    if (!AnimalExists(animal.AnimalId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace A1_200412952.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.AnimalId == id);
             if (animal == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace A1_200412952.Controllers
 
         private bool AnimalExists(int id)
         {
-            return _context.Animal.Any(e => e.Id == id);
+            return _context.Animal.Any(e => e.AnimalId == id);
         }
     }
 }

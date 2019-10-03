@@ -1,4 +1,4 @@
-﻿@model A1_200412952.Models.Pet_Food
+﻿@model A1_200412952.Models.PetFood
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-<h4>Pet_Food</h4>
+<h4>PetFood</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,9 +29,9 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nutritional_Information" class="control-label"></label>
-                <input asp-for="Nutritional_Information" class="form-control" />
-                <span asp-validation-for="Nutritional_Information" class="text-danger"></span>
+                <label asp-for="NutritionalInformation" class="control-label"></label>
+                <input asp-for="NutritionalInformation" class="form-control" />
+                <span asp-validation-for="NutritionalInformation" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Weight" class="control-label"></label>
@@ -44,9 +44,9 @@
                 <span asp-validation-for="Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Type_Of_Animal" class="control-label"></label>
-                <input asp-for="Type_Of_Animal" class="form-control" />
-                <span asp-validation-for="Type_Of_Animal" class="text-danger"></span>
+                <label asp-for="AnimalId" class="control-label"></label>
+                <select asp-for="AnimalId" class="form-control" asp-items="ViewBag.AnimalId"></select>
+                <span asp-validation-for="AnimalId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

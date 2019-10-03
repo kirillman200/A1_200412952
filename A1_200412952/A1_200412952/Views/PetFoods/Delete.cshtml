@@ -1,4 +1,4 @@
-﻿@model A1_200412952.Models.Pet_Food
+﻿@model A1_200412952.Models.PetFood
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Pet_Food</h4>
+    <h4>PetFood</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -30,10 +30,10 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nutritional_Information)
+            @Html.DisplayNameFor(model => model.NutritionalInformation)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Nutritional_Information)
+            @Html.DisplayFor(model => model.NutritionalInformation)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Weight)
@@ -48,10 +48,10 @@
             @Html.DisplayFor(model => model.Brand)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Type_Of_Animal)
+            @Html.DisplayNameFor(model => model.TypeOfAnimal)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Type_Of_Animal)
+            @Html.DisplayFor(model => model.TypeOfAnimal.Description)
         </dd>
     </dl>
     

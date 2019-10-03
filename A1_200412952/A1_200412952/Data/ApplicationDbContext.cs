@@ -13,7 +13,25 @@ namespace A1_200412952.Data
             : base(options)
         {
         }
+        public DbSet<A1_200412952.Models.PetFood> PetFood { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Animal>().HasData(
+            new Models.Animal(1, "Labrador", "Big and cute"),
+            new Models.Animal(2, "GIANT SCHNAUZER", "HUGE and has lots of hair") 
+
+                );
+
+
+            modelBuilder.Entity<PetFood>().HasData(
+            new Models.PetFood() {Id = 1, Price = 10, Name = "Meat", Description = "Your pet will like it", NutritionalInformation = "It is probably healthy", Weight = 4, Brand = "NoName", AnimalId = 2  }
+
+                );
+        }
+
         public DbSet<A1_200412952.Models.Animal> Animal { get; set; }
-        public DbSet<A1_200412952.Models.Pet_Food> Pet_Food { get; set; }
     }
 }
