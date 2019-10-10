@@ -27,7 +27,8 @@ namespace A1_200412952.Data
 
 
             modelBuilder.Entity<PetFood>().HasData(
-            new Models.PetFood() {Id = 1, Price = 10, Name = "Meat", Description = "Your pet will like it", NutritionalInformation = "It is probably healthy", Weight = 4, Brand = "NoName", AnimalId = 2  }
+            new Models.PetFood() {Id = 1, Price = 10, Name = "Meat", Description = "Your pet will like it", NutritionalInformation = "It is probably healthy", Weight = 4, Brand = "NoName", ImageUrl = " ", AnimalId = 2  },
+            new Models.PetFood() {Id = 2, Price = 1, Name = "Bone", Description = "It will last for 2 months", NutritionalInformation = "Just a bone", Weight = 1, Brand = "PetFoods", ImageUrl = " ",  AnimalId = 1  }
 
                 );
         }

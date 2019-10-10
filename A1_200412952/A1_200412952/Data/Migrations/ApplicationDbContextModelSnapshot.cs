@@ -52,6 +52,8 @@ namespace A1_200412952.Data.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -69,7 +71,8 @@ namespace A1_200412952.Data.Migrations
                     b.ToTable("PetFood");
 
                     b.HasData(
-                        new { Id = 1, AnimalId = 2, Brand = "NoName", Description = "Your pet will like it", Name = "Meat", NutritionalInformation = "It is probably healthy", Price = 10m, Weight = 4f }
+                        new { Id = 1, AnimalId = 2, Brand = "NoName", Description = "Your pet will like it", ImageUrl = " ", Name = "Meat", NutritionalInformation = "It is probably healthy", Price = 10m, Weight = 4f },
+                        new { Id = 2, AnimalId = 1, Brand = "PetFoods", Description = "It will last for 2 months", ImageUrl = " ", Name = "Bone", NutritionalInformation = "Just a bone", Price = 1m, Weight = 1f }
                     );
                 });
 

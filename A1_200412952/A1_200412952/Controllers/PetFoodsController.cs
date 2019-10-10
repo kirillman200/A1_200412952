@@ -48,7 +48,7 @@ namespace A1_200412952.Controllers
         // GET: PetFoods/Create
         public IActionResult Create()
         {
-            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description");
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Name");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace A1_200412952.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,AnimalId")] PetFood petFood)
+        public async Task<IActionResult> Create([Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,ImageUrl,AnimalId")] PetFood petFood)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace A1_200412952.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description", petFood.AnimalId);
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Name", petFood.AnimalId);
             return View(petFood);
         }
 
@@ -91,7 +91,7 @@ namespace A1_200412952.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,AnimalId")] PetFood petFood)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Name,Description,NutritionalInformation,Weight,Brand,ImageUrl, AnimalId")] PetFood petFood)
         {
             if (id != petFood.Id)
             {
@@ -118,7 +118,7 @@ namespace A1_200412952.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Description", petFood.AnimalId);
+            ViewData["AnimalId"] = new SelectList(_context.Set<Animal>(), "AnimalId", "Name", petFood.AnimalId);
             return View(petFood);
         }
 
